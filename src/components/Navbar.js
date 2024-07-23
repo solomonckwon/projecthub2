@@ -128,9 +128,9 @@ function NavBar(props) {
         <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
           <Link to="/dashboard">Dashboard</Link>
         </Menu.Item>}
-      {!loggedIn && <Menu.Item key="contact" icon={<ContactsOutlined />}>
+      {/* {!loggedIn && <Menu.Item key="contact" icon={<ContactsOutlined />}>
         <Link to="/contact">Contact</Link>
-      </Menu.Item>}
+      </Menu.Item>} */}
       {!loggedIn && <Menu.Item key="about" icon={<CoffeeOutlined />}>
         <Link to="/about">About</Link>
       </Menu.Item>}

@@ -1,6 +1,6 @@
 
 import { Card } from 'antd';
-import backgroundImage from "../styles/image1.jpg";
+import backgroundImage from "../styles/mountain.JPG";
 import { useTheme, useThemeUpdate } from "../contexts/ThemeContext";
 import { ConfigProvider, theme, Typography, Layout } from 'antd';
 import React, { useState, useEffect } from 'react';
@@ -10,7 +10,7 @@ const { Text , Link } = Typography;
 
 const TypingAnimation = () => {
   const [text, setText] = useState('');
-  const fullText = "TThis is Grace's favorite quote and color. Don't tell her I told you.";
+  const fullText = "Weelcome to ProjectHub!";
 
   useEffect(() => {
     let isMounted = true;
@@ -19,7 +19,7 @@ const TypingAnimation = () => {
     const typeText = () => {
       if (currentIndex < fullText.length - 1) {
         if (isMounted) {
-          setText((prevText) => prevText + fullText[currentIndex]);
+          setText((text) => text + fullText.charAt(currentIndex));
           currentIndex++;
           setTimeout(typeText, 100); // Adjust typing speed here (in milliseconds)
         } else {
@@ -55,20 +55,20 @@ const Home = (props) => {
       theme={{
         algorithm: currentTheme === "dark" ? darkAlgorithm : defaultAlgorithm,
       }}>
-      <Card>
-        <div className="home" style={divStyle}>
-          <center>
-            <h1>
-              Project
-              <span>Hub</span>
-            </h1>
-            <p>I just picked a shade</p>
-            <TypingAnimation />
-          </center>
-        </div>
-      </Card>
+
+      <div className="home" style={divStyle}>
+        <center>
+          <h1>
+            Project
+            <span>Hub</span>
+          </h1>
+          <p>Leaf your project collaboration frustrations behind!</p>
+          <TypingAnimation />
+        </center>
+      </div>
+
       <Footer style={{ textAlign: 'center' }}>
-      Background Poro <Link href="https://www.wallpaperflare.com/white-and-brown-character-illustration-league-of-legends-poro-wallpaper-hbsnc">Wallpaper Flare</Link>
+      I took this background image at Black Mountain, CA. One of my favorite places to climb!
     </Footer>
     </ConfigProvider>
   );
