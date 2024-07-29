@@ -10,7 +10,7 @@ import AuthContext from "../contexts/AuthProvider.js";
 //const LOGIN_URL = '/auth'
 
 const UserCreation = () => {
-  const { data, loading, error } = useFetch('http://localhost:3001/api/users/');
+  const { data, loading, error } = useFetch('http://192.168.30.147:3001/api/users/');
   const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const UserCreation = () => {
 
     // console.log(user)
 
-    axios.post('http://localhost:3001/api/users/createUser', user).then(console.log('Added User'));
+    axios.post('http://192.168.30.147:3001/api/users/createUser', user).then(console.log('Added User'));
     const user1 = values.username;
     const password1 = values.password;
     setAuth({ user1, password1 });

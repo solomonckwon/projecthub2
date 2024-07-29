@@ -43,7 +43,7 @@ function Profile() {
         //find the IDs associated with passed usernames
         const userIDs = []
         for (const username of values.users) {
-           const user_id = await axios.get(`http://localhost:3001/api/users/findusername/${username}`);
+           const user_id = await axios.get(`http://192.168.30.147:3001/api/users/findusername/${username}`);
            if (!user_id) {
             console.log("Error adding friend")
             message.error("Error adding friend")
@@ -70,7 +70,7 @@ function Profile() {
                     message.error(`${friend.username} was removed from your friend list!`); // Show error message
                     user.friends = user.friends.filter(f => f !== friend._id);
                     let data = { ...user };
-                    await axios.patch(`http://localhost:3001/api/users/${user._id}`, data);
+                    await axios.patch(`http://192.168.30.147:3001/api/users/${user._id}`, data);
                 } 
                 //Cant add yourself as friend
                 else if (friend._id === user._id) {
@@ -81,7 +81,7 @@ function Profile() {
                     message.success(`${friend.username} added successfully`); // Show success message
                     user.friends.push(friend._id);
                     let data = { ...user };
-                    await axios.patch(`http://localhost:3001/api/users/${user._id}`, data);
+                    await axios.patch(`http://192.168.30.147:3001/api/users/${user._id}`, data);
                 }
             }
             form.resetFields();
@@ -100,7 +100,7 @@ function Profile() {
 
     const fetchMembers = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/users/`);
+            const response = await axios.get(`http://192.168.30.147:3001/api/users/`);
             const parsedMembers = response.data.filter(member => member.username !== user.username);
             const friendsOfUser = user.friends;
             setMembers(parsedMembers);
@@ -111,7 +111,7 @@ function Profile() {
 
     const fetchUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/users/findusername/${auth.user1}`)
+            const response = await axios.get(`http://192.168.30.147:3001/api/users/findusername/${auth.user1}`)
             setUser(response.data);
         } catch (error) {
             console.error(error);
@@ -125,7 +125,7 @@ function Profile() {
             }
             let accumulatedFriends = []; // Array to accumulate friends data
             for (let i = 0; i < user.friends.length; i++) {
-                const response = await axios.get(`http://localhost:3001/api/users/find/${user.friends[i]}`);
+                const response = await axios.get(`http://192.168.30.147:3001/api/users/find/${user.friends[i]}`);
                 accumulatedFriends = accumulatedFriends.concat(response.data); // Accumulate friends data
             }
             setFriends(accumulatedFriends); // Update state with accumulated data

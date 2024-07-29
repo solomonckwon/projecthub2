@@ -14,7 +14,7 @@ const EditTaskStatus = (task_id) => {
         const fetchTask = async () => {
             if (id != null) {
                 try {
-                    const response = await axios.get(`http://localhost:3001/api/tasks/get/${id}`);
+                    const response = await axios.get(`http://192.168.30.147:3001/api/tasks/get/${id}`);
                     setTask(response.data);
 
                 } catch (error) {
@@ -46,7 +46,7 @@ const EditTaskStatus = (task_id) => {
             setVisible(false);
             form.resetFields();
             try {
-                await axios.patch(`http://localhost:3001/api/tasks/update/${id}`, task);
+                await axios.patch(`http://192.168.30.147:3001/api/tasks/update/${id}`, task);
                 console.log("Task updated successfully");
                 window.location.reload(false);
             }

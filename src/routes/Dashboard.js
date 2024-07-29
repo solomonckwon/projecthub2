@@ -16,7 +16,7 @@ function Dashboard() {
     const { defaultAlgorithm, darkAlgorithm } = theme;
     const currentTheme = useTheme();
 
-    const { data, loading, error } = useFetch('http://localhost:3001/api/projects');
+    const { data, loading, error } = useFetch('http://192.168.30.147:3001/api/projects');
     const [projects, setProjects] = useState([]);
     const [deleteProject, setDeleteProject] = useState({});
     const [user, setUser] = useState([]);
@@ -49,7 +49,7 @@ function Dashboard() {
         // Logic to delete the project with the given id
         setDeleteModalVisible(false);
         try {
-            await axios.delete(`http://localhost:3001/api/projects/delete/${deleteProject}`);
+            await axios.delete(`http://192.168.30.147:3001/api/projects/delete/${deleteProject}`);
             window.location.href = '/dashboard';
         } catch (error) {
             console.log('Error deleting project:', error);
@@ -65,7 +65,7 @@ function Dashboard() {
     //get currently logged in user
     const fetchUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/users/findusername/${auth.user1}`)
+            const response = await axios.get(`http://192.168.30.147:3001/api/users/findusername/${auth.user1}`)
             setUser(response.data);
             // console.log(response.data)
             fetchProjects();
@@ -80,8 +80,8 @@ function Dashboard() {
             await new Promise((resolve) => setTimeout(resolve, 0));
             //owners are members as well
             if (user._id !== undefined) {
-                const response_member = await axios.get(`http://localhost:3001/api/projects/findbymember/${user._id}`)
-                const response_owner = await axios.get(`http://localhost:3001/api/projects/findbyowner/${user._id}`)
+                const response_member = await axios.get(`http://192.168.30.147:3001/api/projects/findbymember/${user._id}`)
+                const response_owner = await axios.get(`http://192.168.30.147:3001/api/projects/findbyowner/${user._id}`)
                 const concatenatedResponse = ([...response_member.data, ...response_owner.data])
                 const uniqueResponse = Array.from(
                     new Set(

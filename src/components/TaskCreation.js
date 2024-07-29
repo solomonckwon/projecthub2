@@ -31,7 +31,7 @@ const TaskForm = () => {
   const onFinish = async (values) => {
     try {
       const data = { ...values };
-      const response = await axios.post(`http://localhost:3001/api/tasks/add/${id}`, data);
+      const response = await axios.post(`http://192.168.30.147:3001/api/tasks/add/${id}`, data);
       console.log('Task created successfully');
       setVisible(false);
       form.resetFields();
@@ -48,7 +48,7 @@ const TaskForm = () => {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/projects/find/${id}`);
+      const response = await axios.get(`http://192.168.30.147:3001/api/projects/find/${id}`);
       setMembers(response.data.members);
       // console.log(response.data.members);
     } catch (error) {

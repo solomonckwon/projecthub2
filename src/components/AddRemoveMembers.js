@@ -49,7 +49,7 @@ function AddRemoveMembers() {
         form.resetFields();
         project.members = arr
         try {
-            axios.patch(`http://localhost:3001/api/projects/${id}`, project);
+            axios.patch(`http://192.168.30.147:3001/api/projects/${id}`, project);
             console.log("Project updated successfully");
             window.location.reload(false);
         }
@@ -62,7 +62,7 @@ function AddRemoveMembers() {
 
     const fetchProject = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/projects/find/${id}`);
+            const response = await axios.get(`http://192.168.30.147:3001/api/projects/find/${id}`);
             setProject(response.data);
         } catch (error) {
             console.log('Error fetching project:', error);
@@ -70,7 +70,7 @@ function AddRemoveMembers() {
     };
     const fetchUsers = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/api/users/`);
+            const response = await axios.get(`http://192.168.30.147:3001/api/users/`);
             setUsers(response.data);
         } catch (error) {
             console.log('Error fetching users:', error);

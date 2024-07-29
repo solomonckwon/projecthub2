@@ -17,7 +17,7 @@ const EditTaskDialog = (task_details) => {
           if (id != null) {
             try {
               // console.log(id)
-              const response = await axios.get(`http://localhost:3001/api/tasks/get/${id}`);
+              const response = await axios.get(`http://192.168.30.147:3001/api/tasks/get/${id}`);
               setTask(response.data);
               console.log("Fetching Task...", task);
             } catch (error) {
@@ -51,7 +51,7 @@ const EditTaskDialog = (task_details) => {
             setVisible(false);
             form.resetFields();
             try {
-              axios.patch(`http://localhost:3001/api/tasks/update/${id}`, task);
+              axios.patch(`http://192.168.30.147:3001/api/tasks/update/${id}`, task);
               console.log("Project updated successfully");
               window.location.reload(false);
             }

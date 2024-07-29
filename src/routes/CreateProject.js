@@ -21,7 +21,7 @@ const ProjectForm = () => {
     //find the IDs associated with passed usernames
     for (const username of values.members) {
       try{
-        const user_id = await axios.get(`http://localhost:3001/api/users/findusername/${username}`);
+        const user_id = await axios.get(`http://192.168.30.147:3001/api/users/findusername/${username}`);
         userIDs.push(user_id.data._id);
       } catch (error) {
         console.log("Issue with finding user_id (CreateProject.js)")
@@ -30,7 +30,7 @@ const ProjectForm = () => {
     values.members = userIDs;
 
     try {
-      const userlogged = await axios.get(`http://localhost:3001/api/users/findusername/${auth.user1}`);
+      const userlogged = await axios.get(`http://192.168.30.147:3001/api/users/findusername/${auth.user1}`);
       values.members.push(userlogged.data._id);
       const data = { ...values, owner: userlogged.data._id }; // Add the owner field with the logged-in user's _id
       console.log(data)
@@ -43,7 +43,7 @@ const ProjectForm = () => {
         return;
       }
 
-      await axios.post('http://localhost:3001/api/projects/add', data);
+      await axios.post('http://192.168.30.147:3001/api/projects/add', data);
       console.log('Project created successfully');
       navigate("/dashboard");
     } catch (error) {
@@ -56,7 +56,7 @@ const ProjectForm = () => {
   };
   const fetchMembers = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/users/`);
+      const response = await axios.get(`http://192.168.30.147:3001/api/users/`);
       setMembers(response.data);
       console.log(response.data);
     } catch (error) {

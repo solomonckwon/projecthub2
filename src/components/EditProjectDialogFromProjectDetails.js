@@ -17,7 +17,7 @@ const EditProjectDialogFromProjectDetails = () => {
       if (id != null) {
         try {
           // console.log(id)
-          const response = await axios.get(`http://localhost:3001/api/projects/find/${id}`);
+          const response = await axios.get(`http://192.168.30.147:3001/api/projects/find/${id}`);
           setProject(response.data);
           console.log("Fetching project...", project);
         } catch (error) {
@@ -49,7 +49,7 @@ const EditProjectDialogFromProjectDetails = () => {
       setVisible(false);
       form.resetFields();
       try {
-        await axios.patch(`http://localhost:3001/api/projects/${id}`, project);
+        await axios.patch(`http://192.168.30.147:3001/api/projects/${id}`, project);
         console.log("Project updated successfully");
         window.location.reload(false);
       } catch (error) {

@@ -63,7 +63,7 @@ const Login = () => {
 
     console.log(user)
 
-    axios.post('http://localhost:3001/api/users/createUser', user).then(console.log('Added User'));
+    axios.post('http://192.168.30.147:3001/api/users/createUser', user).then(console.log('Added User'));
   };
 
   const onFinishCreate = (values) => {
@@ -74,7 +74,7 @@ const Login = () => {
   //Logic for user login
   const onFinishLogin = (values) => {
     console.log('Login:', values);
-    axios.get('http://localhost:3001/api/users/')
+    axios.get('http://192.168.30.147:3001/api/users/')
       .then(response => {
         if (response.data.length > 0) {
           let users = response.data.map(user => user.username)

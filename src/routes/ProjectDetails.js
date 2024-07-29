@@ -25,7 +25,7 @@ function ProjectDetails() {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/projects/find/${id}`);
+                const response = await axios.get(`http://192.168.30.147:3001/api/projects/find/${id}`);
                 setProject(response.data);
                 // console.log("Fetching project...", project);
             } catch (error) {
@@ -43,7 +43,7 @@ function ProjectDetails() {
                 const tasksLoaded = await Promise.all(
                     project.tasklist.map(async (task) => {
                         const response = await axios.get(
-                            `http://localhost:3001/api/tasks/get/${task._id}`
+                            `http://192.168.30.147:3001/api/tasks/get/${task._id}`
                         );
                         if (response.data) {
                             return response.data;
@@ -71,7 +71,7 @@ function ProjectDetails() {
         // Logic to delete the project with the given id
         setDeleteModalVisible(false);
         try {
-            await axios.delete(`http://localhost:3001/api/projects/delete/${project._id}`);
+            await axios.delete(`http://192.168.30.147:3001/api/projects/delete/${project._id}`);
             setProject(null);
             window.location.href = '/dashboard';
         } catch (error) {
@@ -129,7 +129,7 @@ function ProjectDetails() {
             return;
         }
         try{
-            await axios.delete(`http://localhost:3001/api/tasks/delete/${deleteTaskId}`);
+            await axios.delete(`http://192.168.30.147:3001/api/tasks/delete/${deleteTaskId}`);
             window.location.href = `/projects/${project._id}`;
         } catch (error) {
             console.log('Error deleting task:', error);
